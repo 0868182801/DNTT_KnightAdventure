@@ -69,6 +69,9 @@ TagManager:
   - name: CongDichChuyen
     uniqueID: 2915773409
     locked: 0
+  - name: Sleep
+    uniqueID: 2627087819
+    locked: 0
   - name: Item
     uniqueID: 1438858561
     locked: 0

@@ -34,6 +34,20 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;  // Lưu thời gian bắt đầu bộ đếm giờ (Time.time: biến lấy thời gian khi game bắt đầu chạy)
     }
     
+    void Awake()
+    {
+        string gameVersion = "1.0.1"; // đổi version khi build mới
+
+        if(PlayerPrefs.GetString("GameVersion", "") != gameVersion)
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetString("GameVersion", gameVersion);
+            PlayerPrefs.Save();
+
+            Debug.Log("Build mới -> reset dữ liệu");
+        }
+    }
+
     void Update()
     {
         if(isGameOver || isGameWin) return; 
@@ -198,7 +212,7 @@ public class GameManager : MonoBehaviour
         string nameScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("ContinueScene", nameScene);
         PlayerPrefs.Save();
-        SaveScoreData();
+        //SaveScoreData();
     }
 
     public void GameWin()
